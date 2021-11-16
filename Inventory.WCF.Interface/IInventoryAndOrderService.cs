@@ -8,35 +8,20 @@ using System.Threading.Tasks;
 
 namespace Inventory.WCF.Interface
 {
-    [ServiceContract(CallbackContract = typeof(ICallBack))]
+    [ServiceContract(CallbackContract = typeof(IInventoryAndOrderServiceCallBack))]
     public interface IInventoryAndOrderService
     {
         [OperationContract]
-        List<Product> GetProducts();
-
-        ////for testing
-        //[OperationContract]
-        //void DeleteProduct(int id);
+        bool CreateOrder(Guid stockid, string productname, int quantity);
 
         [OperationContract]
-        List<User> GetUsers();
+        IEnumerable<Stock> GetStocks();
 
         [OperationContract]
-        List<Stock> GetStocks();
+        Stock GetStockById(Guid id);
+
 
         [OperationContract]
-        List<Stock> UpdateStock(Stock stock);
-
-        [OperationContract]
-        List<Order> GetOrders();
-
-        [OperationContract]
-        List<Order> AddOrders(Order order);
-
-        [OperationContract]
-        List<StockAndProduct> GetStockAndProducts();
-
-        [OperationContract]
-        List<OrderAndProductAndUser> GetOrderAndProductAndUsers(User user);
+        IEnumerable<Order> GetOrders();
     }
 }

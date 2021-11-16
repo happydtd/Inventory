@@ -59,19 +59,7 @@
     <None Include="Connected Services\WCFService\Inventory.Client.WCF.WCFService.Order.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\WCFService\Inventory.Client.WCF.WCFService.OrderAndProductAndUser.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WCFService\Inventory.Client.WCF.WCFService.Product.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\WCFService\Inventory.Client.WCF.WCFService.Stock.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WCFService\Inventory.Client.WCF.WCFService.StockAndProduct.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WCFService\Inventory.Client.WCF.WCFService.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\WCFService\Inventory.WCF.Model.xsd">

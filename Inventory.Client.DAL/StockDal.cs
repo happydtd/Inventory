@@ -33,13 +33,13 @@ namespace Inventory.Client.DAL
             }
         }
 
-        public async Task<IEnumerable<Stock>> Update(Stock stock)
+        public async Task<Stock> GetById(Guid id)
         {
             InventoryAndOrderServiceClient client = null;
             try
             {
                 client = new InventoryAndOrderServiceClient(instanceContext);
-                return await client.UpdateStockAsync(stock);
+                return await client.GetStockByIdAsync(id);
             }
             catch (Exception ex)
             {

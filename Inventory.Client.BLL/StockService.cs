@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Inventory.Client.BLL
 {
-    public class StockBll : IStockBll
+    public class StockService : IStockService
     {
         IStockDal _stockDal;
 
-        public StockBll(IStockDal stockDal)
+        public StockService(IStockDal stockDal)
         {
             _stockDal = stockDal;
 
@@ -22,9 +22,9 @@ namespace Inventory.Client.BLL
             return await _stockDal.GetAll();
         }
 
-        public async Task<IEnumerable<Stock>> Update(Stock stock)
+        public async Task<Stock> GetById(Guid id)
         {
-            return await _stockDal.Update(stock);
+            return await _stockDal.GetById(id);
         }
 
     }

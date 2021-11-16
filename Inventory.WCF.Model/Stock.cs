@@ -11,7 +11,7 @@ namespace Inventory.WCF.Model
     public class Stock : BaseModel
     {
         [DataMember]
-        public int ProductId { get; set; }
+        public string ProductName { get; set; }
         [DataMember]
         public int Quantity { get; set; }
     }

@@ -9,19 +9,19 @@ using System.Threading.Tasks;
 
 namespace Inventory.WCF.Service
 {
-    public class OrderService : BaseService
+    public class OrderData : BaseService
     {
-        private OrderService() { }
+        private OrderData() { }
 
-        private static OrderService instance = null;
+        private static OrderData instance = null;
 
-        public static OrderService Instance
+        public static OrderData Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new OrderService();
+                    instance = new OrderData();
                 }
                 return instance;
             }
@@ -29,7 +29,7 @@ namespace Inventory.WCF.Service
 
         public List<Order> Orders { get; set; }
 
-        public override void InitializeList()
+        public void InitializeList()
         {
             if (Orders == null)
             {

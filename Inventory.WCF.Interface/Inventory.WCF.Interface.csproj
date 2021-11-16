@@ -42,9 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICallBack.cs" />
-    <Compile Include="IBaseService.cs" />
     <Compile Include="IInventoryAndOrderService.cs" />
+    <Compile Include="IInventoryAndOrderServiceCallBack.cs" />
+    <Compile Include="IBaseService.cs" />
+    <Compile Include="IOrderDataService.cs" />
+    <Compile Include="IStockDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

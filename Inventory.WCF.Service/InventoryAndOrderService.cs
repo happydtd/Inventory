@@ -5,86 +5,56 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Inventory.WCF.Service
 {
     public class InventoryAndOrderService : IInventoryAndOrderService
     {
-        ProductService _productService = ProductService.Instance;
-        UserService _userService = UserService.Instance;
-        StockService _stockService = StockService.Instance;
-        OrderService _orderService = OrderService.Instance;
+        int sleep = 5000;
+        OrderDataService _orderDataService;
+        StockDataService _stockDataService;
         public InventoryAndOrderService()
         {
-            _userService.InitializeList();
-            _productService.InitializeList();
-            _stockService.InitializeList();
-            _orderService.InitializeList();
+            _orderDataService = new OrderDataService();
+            _stockDataService = new StockDataService();
         }
 
-        //public void DeleteProduct(int id)
-        //{
-        //    _productService.Products = _productService.Delete<Product>(_productService.Products, id).ToList();
 
-        //    ICallBack callBack = OperationContext.Current.GetCallbackChannel<ICallBack>(); //获取客户端实现的ICallBack接口的实例；
-        //    callBack.InventoryUpdated();
-        //}
-
-        public List<Product> GetProducts()
+        public bool CreateOrder(Guid stockid, string productname, int quantity)
         {
-            return _productService.Products;
+            Thread.Sleep(5000);
+            //add new order to order list
+            var orderUpdateResult = _orderDataService.Add(new Order() { Id = Guid.NewGuid(), ProductName = productname, Quantity = quantity });
+            var stock = GetStockById(stockid);
+            var newQuantity = stock.Quantity - quantity;
+            stock.Quantity = newQuantity;
+            //update stock list
+            var stockUpdateResult = _stockDataService.Update(stock).Where(i => i.Id == stock.Id).FirstOrDefault().Quantity == newQuantity ? true : false;
+
+            //notice client to update stock and order list
+            IInventoryAndOrderServiceCallBack callBack = OperationContext.Current.GetCallbackChannel<IInventoryAndOrderServiceCallBack>();
+            callBack.StockQuantityChanged();
+            return orderUpdateResult && stockUpdateResult;
         }
 
-        public List<User> GetUsers()
+        public IEnumerable<Order> GetOrders()
         {
-            return _userService.Users;
+            Thread.Sleep(5000);
+            return _orderDataService.Get();
         }
 
-        public List<Stock> GetStocks()
+        public Stock GetStockById(Guid id)
         {
-            return _stockService.Stocks;
+            Thread.Sleep(5000);
+            return _stockDataService.Get(id);
         }
 
-        public List<Stock> UpdateStock(Stock stock)
+        public IEnumerable<Stock> GetStocks()
         {
-           return _stockService.Update<Stock>(_stockService.Stocks, stock).ToList();
-        }
-
-        public List<Order> GetOrders()
-        {
-            return _orderService.Orders;
-        }
-
-        public List<Order> AddOrders(Order order)
-        {
-            return _orderService.Insert(_orderService.Orders, order).ToList();
-        }
-
-        public List<StockAndProduct> GetStockAndProducts()
-        {
-            var stocks = _stockService.Stocks;
-            var products = _productService.Products;
-
-            if (stocks!= null && products != null && stocks.Count>0 && products.Count >0)
-            {
-                return stocks.Join(products, s => s.ProductId, p => p.Id, (Stock, Product) => new { Stock, Product })
-                    .Select(i=>new StockAndProduct() {Id = i.Stock.Id, ProductId = i.Stock.ProductId, ProductName=i.Product.ProductName, Quantity = i.Stock.Quantity }).ToList();
-            }
-            return null;
-        }
-
-        public List<OrderAndProductAndUser> GetOrderAndProductAndUsers(User user)
-        {
-            var orders = _orderService.Orders;
-            var products = _productService.Products;
-
-            if (orders != null && products != null && orders.Count > 0 && products.Count > 0)
-            {
-                return orders.Where(o=>o.UserId == user.Id)?.Join(products, o => o.ProductId, p => p.Id, (Order, Product) => new { Order, Product })
-                    .Select(i => new OrderAndProductAndUser() { Id = i.Order.Id, ProductId = i.Order.ProductId, ProductName = i.Product.ProductName, Quantity = i.Order.Quantity, UserId = user.Id, Timestamp = i.Order.Timestamp }).ToList();
-            }
-            return null;
+            Thread.Sleep(5000);
+            return _stockDataService.Get();
         }
     }
 }

@@ -11,6 +11,6 @@ namespace Inventory.Client.Interface
     {
         Task<IEnumerable<Stock>> GetAll();
 
-        Task<IEnumerable<Stock>> Update(Stock stock);
+        Task<Stock> GetById(Guid id);
     }
 }

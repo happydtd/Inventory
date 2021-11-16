@@ -14,13 +14,13 @@ namespace Inventory.Client.DAL
     {
         InstanceContext instanceContext = new InstanceContext(new ServerDataUpdated());
 
-        public async Task<IEnumerable<Order>> AddOrder(Order order)
+        public async Task<bool> CreateOrder(Guid stockid, string productname, int quantity)
         {
             InventoryAndOrderServiceClient client = null;
             try
             {
                 client = new InventoryAndOrderServiceClient(instanceContext);
-                return await client.AddOrdersAsync(order);
+                return await client.CreateOrderAsync(stockid, productname, quantity);
             }
             catch (Exception ex)
             {

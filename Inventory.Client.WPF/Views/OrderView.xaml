@@ -1,4 +1,4 @@
-﻿<Window
+﻿<UserControl
     x:Class="Inventory.Client.WPF.Views.OrderView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,22 +6,73 @@
     xmlns:local="clr-namespace:Inventory.Client.WPF.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
-    Title="Order"
-    Width="800"
-    Height="450"
+    Width="500"
+    Height="350"
     prism:ViewModelLocator.AutoWireViewModel="True"
-    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>
-        <Label
-            Margin="67,113,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="This is Pop Up window" />
-        <Button
-            Width="150"
-            Height="50"
-            Command="{Binding GetProductCommand}"
-            Content="Get product too" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="Product Name" />
+            <ComboBox
+                Grid.Column="1"
+                Width="200"
+                Height="50"
+                ItemsSource="{Binding ProductNames}"
+                SelectedItem="{Binding SelectedProductName}"
+                Text="test" />
+            <TextBlock
+                Grid.Row="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="Quantity" />
+            <TextBox
+                Grid.Row="1"
+                Grid.Column="1"
+                Width="200"
+                Height="50"
+                Text="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+        <TextBlock
+            Grid.Row="2"
+            HorizontalAlignment="Center"
+            Foreground="Red"
+            Text="{Binding Message}" />
+        <Grid Grid.Row="3" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Button
+                Grid.Column="1"
+                Width="100"
+                Height="50"
+                Command="{Binding PlaceOrderCommand}"
+                Content="Place order" />
+            <Button
+                Grid.Column="2"
+                Width="100"
+                Height="50"
+                Command="{Binding CloseCommand}"
+                Content="Close" />
+        </Grid>
     </Grid>
-</Window>
+</UserControl>

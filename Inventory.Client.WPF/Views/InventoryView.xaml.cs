@@ -24,5 +24,16 @@ namespace Inventory.Client.WPF.Views
         {
             InitializeComponent();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is ICloseWindows vm)
+            {
+                vm.Close += () =>
+                {
+                    Application.Current.Shutdown();
+                };
+            }
+        }
     }
 }

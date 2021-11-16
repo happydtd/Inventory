@@ -41,12 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OrderAndProductAndUserBll.cs" />
-    <Compile Include="OrderBll.cs" />
-    <Compile Include="ProductBll.cs" />
-    <Compile Include="StockAndProductBll.cs" />
-    <Compile Include="StockBll.cs" />
-    <Compile Include="UserBll.cs" />
+    <Compile Include="OrderService.cs" />
+    <Compile Include="StockService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

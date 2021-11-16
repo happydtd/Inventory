@@ -11,6 +11,6 @@ namespace Inventory.Client.Interface
     {
         Task<IEnumerable<Order>> GetAll();
 
-        Task<IEnumerable<Order>> AddOrder(Order order);
+        Task<bool> CreateOrder(Guid stockid, string productname, int quantity);
     }
 }

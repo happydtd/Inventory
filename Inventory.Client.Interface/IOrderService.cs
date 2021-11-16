@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace Inventory.Client.Interface
 {
-    public interface IUserBll
+    public interface IOrderService
     {
-        Task<IEnumerable<User>> GetAll();
+        Task<IEnumerable<Order>> GetAll();
+
+        Task<bool> CreateOrder(Guid stockid, string productname, int quantity);
     }
 }

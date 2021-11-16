@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace Inventory.Client.BLL
 {
-    public class OrderBll : IOrderBll
+    public class OrderService : IOrderService
     {
         IOrderDal _orderDal;
 
-        public OrderBll(IOrderDal orderDal)
+        public OrderService(IOrderDal orderDal)
         {
             _orderDal = orderDal;
         }
 
-        public async Task<IEnumerable<Order>> AddOrder(Order order)
+        public async Task<bool> CreateOrder(Guid stockid, string productname, int quantity)
         {
-            return await _orderDal.AddOrder(order);
+            return await _orderDal.CreateOrder(stockid, productname, quantity);
         }
 
         public async Task<IEnumerable<Order>> GetAll()

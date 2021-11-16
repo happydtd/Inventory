@@ -17,17 +17,11 @@
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/Inventory.WCF.Model" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IInventoryAndOrderService_GetProducts_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetProducts" />
+  <wsdl:message name="IInventoryAndOrderService_CreateOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOrder" />
   </wsdl:message>
-  <wsdl:message name="IInventoryAndOrderService_GetProducts_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetProductsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IInventoryAndOrderService_GetUsers_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetUsers" />
-  </wsdl:message>
-  <wsdl:message name="IInventoryAndOrderService_GetUsers_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
+  <wsdl:message name="IInventoryAndOrderService_CreateOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOrderResponse" />
   </wsdl:message>
   <wsdl:message name="IInventoryAndOrderService_GetStocks_InputMessage">
     <wsdl:part name="parameters" element="tns:GetStocks" />
@@ -35,11 +29,11 @@
   <wsdl:message name="IInventoryAndOrderService_GetStocks_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetStocksResponse" />
   </wsdl:message>
-  <wsdl:message name="IInventoryAndOrderService_UpdateStock_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateStock" />
+  <wsdl:message name="IInventoryAndOrderService_GetStockById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockById" />
   </wsdl:message>
-  <wsdl:message name="IInventoryAndOrderService_UpdateStock_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateStockResponse" />
+  <wsdl:message name="IInventoryAndOrderService_GetStockById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStockByIdResponse" />
   </wsdl:message>
   <wsdl:message name="IInventoryAndOrderService_GetOrders_InputMessage">
     <wsdl:part name="parameters" element="tns:GetOrders" />
@@ -47,79 +41,36 @@
   <wsdl:message name="IInventoryAndOrderService_GetOrders_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetOrdersResponse" />
   </wsdl:message>
-  <wsdl:message name="IInventoryAndOrderService_AddOrders_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddOrders" />
-  </wsdl:message>
-  <wsdl:message name="IInventoryAndOrderService_AddOrders_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddOrdersResponse" />
-  </wsdl:message>
-  <wsdl:message name="IInventoryAndOrderService_GetStockAndProducts_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetStockAndProducts" />
-  </wsdl:message>
-  <wsdl:message name="IInventoryAndOrderService_GetStockAndProducts_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetStockAndProductsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IInventoryAndOrderService_GetOrderAndProductAndUsers_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetOrderAndProductAndUsers" />
-  </wsdl:message>
-  <wsdl:message name="IInventoryAndOrderService_GetOrderAndProductAndUsers_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetOrderAndProductAndUsersResponse" />
-  </wsdl:message>
-  <wsdl:message name="IInventoryAndOrderService_InventoryUpdated_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:InventoryUpdated" />
+  <wsdl:message name="IInventoryAndOrderService_StockQuantityChanged_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:StockQuantityChanged" />
   </wsdl:message>
   <wsdl:portType name="IInventoryAndOrderService">
-    <wsdl:operation name="GetProducts">
-      <wsdl:input wsaw:Action="http://tempuri.org/IInventoryAndOrderService/GetProducts" message="tns:IInventoryAndOrderService_GetProducts_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IInventoryAndOrderService/GetProductsResponse" message="tns:IInventoryAndOrderService_GetProducts_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetUsers">
-      <wsdl:input wsaw:Action="http://tempuri.org/IInventoryAndOrderService/GetUsers" message="tns:IInventoryAndOrderService_GetUsers_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IInventoryAndOrderService/GetUsersResponse" message="tns:IInventoryAndOrderService_GetUsers_OutputMessage" />
+    <wsdl:operation name="CreateOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInventoryAndOrderService/CreateOrder" message="tns:IInventoryAndOrderService_CreateOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInventoryAndOrderService/CreateOrderResponse" message="tns:IInventoryAndOrderService_CreateOrder_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetStocks">
       <wsdl:input wsaw:Action="http://tempuri.org/IInventoryAndOrderService/GetStocks" message="tns:IInventoryAndOrderService_GetStocks_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IInventoryAndOrderService/GetStocksResponse" message="tns:IInventoryAndOrderService_GetStocks_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="UpdateStock">
-      <wsdl:input wsaw:Action="http://tempuri.org/IInventoryAndOrderService/UpdateStock" message="tns:IInventoryAndOrderService_UpdateStock_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IInventoryAndOrderService/UpdateStockResponse" message="tns:IInventoryAndOrderService_UpdateStock_OutputMessage" />
+    <wsdl:operation name="GetStockById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInventoryAndOrderService/GetStockById" message="tns:IInventoryAndOrderService_GetStockById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInventoryAndOrderService/GetStockByIdResponse" message="tns:IInventoryAndOrderService_GetStockById_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetOrders">
       <wsdl:input wsaw:Action="http://tempuri.org/IInventoryAndOrderService/GetOrders" message="tns:IInventoryAndOrderService_GetOrders_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IInventoryAndOrderService/GetOrdersResponse" message="tns:IInventoryAndOrderService_GetOrders_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="AddOrders">
-      <wsdl:input wsaw:Action="http://tempuri.org/IInventoryAndOrderService/AddOrders" message="tns:IInventoryAndOrderService_AddOrders_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IInventoryAndOrderService/AddOrdersResponse" message="tns:IInventoryAndOrderService_AddOrders_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetStockAndProducts">
-      <wsdl:input wsaw:Action="http://tempuri.org/IInventoryAndOrderService/GetStockAndProducts" message="tns:IInventoryAndOrderService_GetStockAndProducts_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IInventoryAndOrderService/GetStockAndProductsResponse" message="tns:IInventoryAndOrderService_GetStockAndProducts_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetOrderAndProductAndUsers">
-      <wsdl:input wsaw:Action="http://tempuri.org/IInventoryAndOrderService/GetOrderAndProductAndUsers" message="tns:IInventoryAndOrderService_GetOrderAndProductAndUsers_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IInventoryAndOrderService/GetOrderAndProductAndUsersResponse" message="tns:IInventoryAndOrderService_GetOrderAndProductAndUsers_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="InventoryUpdated">
-      <wsdl:output wsaw:Action="http://tempuri.org/IInventoryAndOrderService/InventoryUpdated" message="tns:IInventoryAndOrderService_InventoryUpdated_OutputCallbackMessage" />
+    <wsdl:operation name="StockQuantityChanged">
+      <wsdl:output wsaw:Action="http://tempuri.org/IInventoryAndOrderService/StockQuantityChanged" message="tns:IInventoryAndOrderService_StockQuantityChanged_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IInventoryAndOrderService" type="tns:IInventoryAndOrderService">
     <wsp:PolicyReference URI="#NetTcpBinding_IInventoryAndOrderService_policy">
     </wsp:PolicyReference>
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="GetProducts">
-      <soap12:operation soapAction="http://tempuri.org/IInventoryAndOrderService/GetProducts" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetUsers">
-      <soap12:operation soapAction="http://tempuri.org/IInventoryAndOrderService/GetUsers" style="document" />
+    <wsdl:operation name="CreateOrder">
+      <soap12:operation soapAction="http://tempuri.org/IInventoryAndOrderService/CreateOrder" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -136,8 +87,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="UpdateStock">
-      <soap12:operation soapAction="http://tempuri.org/IInventoryAndOrderService/UpdateStock" style="document" />
+    <wsdl:operation name="GetStockById">
+      <soap12:operation soapAction="http://tempuri.org/IInventoryAndOrderService/GetStockById" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -154,35 +105,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddOrders">
-      <soap12:operation soapAction="http://tempuri.org/IInventoryAndOrderService/AddOrders" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetStockAndProducts">
-      <soap12:operation soapAction="http://tempuri.org/IInventoryAndOrderService/GetStockAndProducts" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetOrderAndProductAndUsers">
-      <soap12:operation soapAction="http://tempuri.org/IInventoryAndOrderService/GetOrderAndProductAndUsers" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="InventoryUpdated">
-      <soap12:operation soapAction="http://tempuri.org/IInventoryAndOrderService/InventoryUpdated" style="document" />
+    <wsdl:operation name="StockQuantityChanged">
+      <soap12:operation soapAction="http://tempuri.org/IInventoryAndOrderService/StockQuantityChanged" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

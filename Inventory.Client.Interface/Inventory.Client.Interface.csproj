@@ -41,18 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IOrderAndProductAndUserBll.cs" />
-    <Compile Include="IOrderAndProductAndUserDal.cs" />
-    <Compile Include="IOrderBll.cs" />
+    <Compile Include="ILogHelper.cs" />
+    <Compile Include="IOrderService.cs" />
     <Compile Include="IOrderDal.cs" />
-    <Compile Include="IProductBll.cs" />
-    <Compile Include="IProductDal.cs" />
-    <Compile Include="IStockAndProductBll.cs" />
-    <Compile Include="IStockAndProductDal.cs" />
-    <Compile Include="IStockBll.cs" />
+    <Compile Include="IStockService.cs" />
     <Compile Include="IStockDal.cs" />
-    <Compile Include="IUserBll.cs" />
-    <Compile Include="IUserDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

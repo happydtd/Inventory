@@ -11,6 +11,6 @@ namespace Inventory.WCF.Model
     public class BaseModel
     {
         [DataMember]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

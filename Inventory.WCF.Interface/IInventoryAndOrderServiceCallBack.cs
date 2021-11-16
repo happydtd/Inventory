@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Inventory.WCF.Interface
 {
-    public interface ICallBack
+    public interface IInventoryAndOrderServiceCallBack
     {
         [OperationContract(IsOneWay = true)]
-        void InventoryUpdated();
+        void StockQuantityChanged();
     }
 }

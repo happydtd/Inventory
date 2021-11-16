@@ -12,7 +12,7 @@ namespace Inventory.Client.WCF.CallBacks
     {
         public static Action RequestRefresh;
 
-        public void InventoryUpdated()
+        public void StockQuantityChanged()
         {
             RequestRefresh?.Invoke();
         }

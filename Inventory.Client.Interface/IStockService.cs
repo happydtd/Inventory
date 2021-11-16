@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace Inventory.Client.Interface
 {
-    public interface IProductDal
+    public interface IStockService
     {
-        Task<IEnumerable<Product>> GetAll();
+        Task<IEnumerable<Stock>> GetAll();
+        Task<Stock> GetById(Guid id);
     }
 }

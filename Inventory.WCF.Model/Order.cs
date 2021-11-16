@@ -11,12 +11,8 @@ namespace Inventory.WCF.Model
     public class Order : BaseModel
     {
         [DataMember]
-        public int ProductId { get; set; }
+        public string ProductName { get; set; }
         [DataMember]
-        public string Quantity { get; set; }
-        [DataMember]
-        public int UserId { get; set; }
-        [DataMember]
-        public DateTime Timestamp { get; set; }
+        public int Quantity { get; set; }
     }
 }

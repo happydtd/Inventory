@@ -11,31 +11,19 @@ namespace Inventory.WCF.Service
 {
     public class BaseService: IBaseService
     {
+        static object lockObj = new object();
 
-        //public IEnumerable<T> Delete<T>(List<T> tList, int id) where T : BaseModel
-        //{
-        //    tList?.RemoveAt(id);
-        //    return tList;
-        //}
-
-        //public IEnumerable<T> Delete<T>(List<T> tList, T t) where T : BaseModel
-        //{
-        //    tList?.Remove(t);
-        //    return tList;
-        //}
-
-        public int Find<T>(List<T> tList, T t) where T : BaseModel
+        public T Find<T>(List<T> tList, Guid id) where T : BaseModel
         {
-            var index = tList?.IndexOf(t);
-            if (index.HasValue)
-                return index.Value;
-            else
-                return -1;
+            return tList?.Find(i=>i.Id == id);
         }
 
-        public IEnumerable<T> Insert<T>(List<T> tList, T t) where T : BaseModel
+        public IEnumerable<T> Add<T>(List<T> tList, T t) where T : BaseModel
         {
-            tList?.Add(t);
+            lock (lockObj)
+            {
+                tList?.Add(t);
+            }
             return tList;
         }
 
@@ -54,11 +42,6 @@ namespace Inventory.WCF.Service
                 item = t;
             }
             return tList;
-        }
-
-        public virtual void InitializeList()
-        {
-            
         }
     }
 }

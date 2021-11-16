@@ -15,12 +15,15 @@ namespace Inventory.Client.WCF.WCFService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Product", Namespace="http://schemas.datacontract.org/2004/07/Inventory.WCF.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Stock", Namespace="http://schemas.datacontract.org/2004/07/Inventory.WCF.Model")]
     [System.SerializableAttribute()]
-    public partial class Product : Inventory.Client.WCF.WCFService.BaseModel {
+    public partial class Stock : Inventory.Client.WCF.WCFService.BaseModel {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProductNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int QuantityField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string ProductName {
@@ -34,25 +37,34 @@ namespace Inventory.Client.WCF.WCFService {
                 }
             }
         }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Quantity {
+            get {
+                return this.QuantityField;
+            }
+            set {
+                if ((this.QuantityField.Equals(value) != true)) {
+                    this.QuantityField = value;
+                    this.RaisePropertyChanged("Quantity");
+                }
+            }
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="BaseModel", Namespace="http://schemas.datacontract.org/2004/07/Inventory.WCF.Model")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Inventory.Client.WCF.WCFService.User))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Inventory.Client.WCF.WCFService.Stock))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Inventory.Client.WCF.WCFService.Order))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Inventory.Client.WCF.WCFService.StockAndProduct))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Inventory.Client.WCF.WCFService.OrderAndProductAndUser))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Inventory.Client.WCF.WCFService.Product))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Inventory.Client.WCF.WCFService.Stock))]
     public partial class BaseModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
+        private System.Guid IdField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -65,7 +77,7 @@ namespace Inventory.Client.WCF.WCFService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
+        public System.Guid Id {
             get {
                 return this.IdField;
             }
@@ -89,180 +101,15 @@ namespace Inventory.Client.WCF.WCFService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/Inventory.WCF.Model")]
-    [System.SerializableAttribute()]
-    public partial class User : Inventory.Client.WCF.WCFService.BaseModel {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PasswordField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserNameField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Password {
-            get {
-                return this.PasswordField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
-                    this.PasswordField = value;
-                    this.RaisePropertyChanged("Password");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserName {
-            get {
-                return this.UserNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
-                    this.UserNameField = value;
-                    this.RaisePropertyChanged("UserName");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Stock", Namespace="http://schemas.datacontract.org/2004/07/Inventory.WCF.Model")]
-    [System.SerializableAttribute()]
-    public partial class Stock : Inventory.Client.WCF.WCFService.BaseModel {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ProductIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int QuantityField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ProductId {
-            get {
-                return this.ProductIdField;
-            }
-            set {
-                if ((this.ProductIdField.Equals(value) != true)) {
-                    this.ProductIdField = value;
-                    this.RaisePropertyChanged("ProductId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Quantity {
-            get {
-                return this.QuantityField;
-            }
-            set {
-                if ((this.QuantityField.Equals(value) != true)) {
-                    this.QuantityField = value;
-                    this.RaisePropertyChanged("Quantity");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Order", Namespace="http://schemas.datacontract.org/2004/07/Inventory.WCF.Model")]
     [System.SerializableAttribute()]
     public partial class Order : Inventory.Client.WCF.WCFService.BaseModel {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ProductIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string QuantityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime TimestampField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int UserIdField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ProductId {
-            get {
-                return this.ProductIdField;
-            }
-            set {
-                if ((this.ProductIdField.Equals(value) != true)) {
-                    this.ProductIdField = value;
-                    this.RaisePropertyChanged("ProductId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Quantity {
-            get {
-                return this.QuantityField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.QuantityField, value) != true)) {
-                    this.QuantityField = value;
-                    this.RaisePropertyChanged("Quantity");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime Timestamp {
-            get {
-                return this.TimestampField;
-            }
-            set {
-                if ((this.TimestampField.Equals(value) != true)) {
-                    this.TimestampField = value;
-                    this.RaisePropertyChanged("Timestamp");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int UserId {
-            get {
-                return this.UserIdField;
-            }
-            set {
-                if ((this.UserIdField.Equals(value) != true)) {
-                    this.UserIdField = value;
-                    this.RaisePropertyChanged("UserId");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StockAndProduct", Namespace="http://schemas.datacontract.org/2004/07/Inventory.WCF.Model")]
-    [System.SerializableAttribute()]
-    public partial class StockAndProduct : Inventory.Client.WCF.WCFService.BaseModel {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ProductIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProductNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int QuantityField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ProductId {
-            get {
-                return this.ProductIdField;
-            }
-            set {
-                if ((this.ProductIdField.Equals(value) != true)) {
-                    this.ProductIdField = value;
-                    this.RaisePropertyChanged("ProductId");
-                }
-            }
-        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string ProductName {
@@ -286,109 +133,6 @@ namespace Inventory.Client.WCF.WCFService {
                 if ((this.QuantityField.Equals(value) != true)) {
                     this.QuantityField = value;
                     this.RaisePropertyChanged("Quantity");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OrderAndProductAndUser", Namespace="http://schemas.datacontract.org/2004/07/Inventory.WCF.Model")]
-    [System.SerializableAttribute()]
-    public partial class OrderAndProductAndUser : Inventory.Client.WCF.WCFService.BaseModel {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ProductIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ProductNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string QuantityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime TimestampField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int UserIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserNameField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ProductId {
-            get {
-                return this.ProductIdField;
-            }
-            set {
-                if ((this.ProductIdField.Equals(value) != true)) {
-                    this.ProductIdField = value;
-                    this.RaisePropertyChanged("ProductId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ProductName {
-            get {
-                return this.ProductNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ProductNameField, value) != true)) {
-                    this.ProductNameField = value;
-                    this.RaisePropertyChanged("ProductName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Quantity {
-            get {
-                return this.QuantityField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.QuantityField, value) != true)) {
-                    this.QuantityField = value;
-                    this.RaisePropertyChanged("Quantity");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime Timestamp {
-            get {
-                return this.TimestampField;
-            }
-            set {
-                if ((this.TimestampField.Equals(value) != true)) {
-                    this.TimestampField = value;
-                    this.RaisePropertyChanged("Timestamp");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int UserId {
-            get {
-                return this.UserIdField;
-            }
-            set {
-                if ((this.UserIdField.Equals(value) != true)) {
-                    this.UserIdField = value;
-                    this.RaisePropertyChanged("UserId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserName {
-            get {
-                return this.UserNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
-                    this.UserNameField = value;
-                    this.RaisePropertyChanged("UserName");
                 }
             }
         }
@@ -398,17 +142,11 @@ namespace Inventory.Client.WCF.WCFService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WCFService.IInventoryAndOrderService", CallbackContract=typeof(Inventory.Client.WCF.WCFService.IInventoryAndOrderServiceCallback))]
     public interface IInventoryAndOrderService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInventoryAndOrderService/GetProducts", ReplyAction="http://tempuri.org/IInventoryAndOrderService/GetProductsResponse")]
-        Inventory.Client.WCF.WCFService.Product[] GetProducts();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInventoryAndOrderService/CreateOrder", ReplyAction="http://tempuri.org/IInventoryAndOrderService/CreateOrderResponse")]
+        bool CreateOrder(System.Guid stockid, string productname, int quantity);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInventoryAndOrderService/GetProducts", ReplyAction="http://tempuri.org/IInventoryAndOrderService/GetProductsResponse")]
-        System.Threading.Tasks.Task<Inventory.Client.WCF.WCFService.Product[]> GetProductsAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInventoryAndOrderService/GetUsers", ReplyAction="http://tempuri.org/IInventoryAndOrderService/GetUsersResponse")]
-        Inventory.Client.WCF.WCFService.User[] GetUsers();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInventoryAndOrderService/GetUsers", ReplyAction="http://tempuri.org/IInventoryAndOrderService/GetUsersResponse")]
-        System.Threading.Tasks.Task<Inventory.Client.WCF.WCFService.User[]> GetUsersAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInventoryAndOrderService/CreateOrder", ReplyAction="http://tempuri.org/IInventoryAndOrderService/CreateOrderResponse")]
+        System.Threading.Tasks.Task<bool> CreateOrderAsync(System.Guid stockid, string productname, int quantity);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInventoryAndOrderService/GetStocks", ReplyAction="http://tempuri.org/IInventoryAndOrderService/GetStocksResponse")]
         Inventory.Client.WCF.WCFService.Stock[] GetStocks();
@@ -416,42 +154,24 @@ namespace Inventory.Client.WCF.WCFService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInventoryAndOrderService/GetStocks", ReplyAction="http://tempuri.org/IInventoryAndOrderService/GetStocksResponse")]
         System.Threading.Tasks.Task<Inventory.Client.WCF.WCFService.Stock[]> GetStocksAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInventoryAndOrderService/UpdateStock", ReplyAction="http://tempuri.org/IInventoryAndOrderService/UpdateStockResponse")]
-        Inventory.Client.WCF.WCFService.Stock[] UpdateStock(Inventory.Client.WCF.WCFService.Stock stock);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInventoryAndOrderService/GetStockById", ReplyAction="http://tempuri.org/IInventoryAndOrderService/GetStockByIdResponse")]
+        Inventory.Client.WCF.WCFService.Stock GetStockById(System.Guid id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInventoryAndOrderService/UpdateStock", ReplyAction="http://tempuri.org/IInventoryAndOrderService/UpdateStockResponse")]
-        System.Threading.Tasks.Task<Inventory.Client.WCF.WCFService.Stock[]> UpdateStockAsync(Inventory.Client.WCF.WCFService.Stock stock);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInventoryAndOrderService/GetStockById", ReplyAction="http://tempuri.org/IInventoryAndOrderService/GetStockByIdResponse")]
+        System.Threading.Tasks.Task<Inventory.Client.WCF.WCFService.Stock> GetStockByIdAsync(System.Guid id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInventoryAndOrderService/GetOrders", ReplyAction="http://tempuri.org/IInventoryAndOrderService/GetOrdersResponse")]
         Inventory.Client.WCF.WCFService.Order[] GetOrders();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInventoryAndOrderService/GetOrders", ReplyAction="http://tempuri.org/IInventoryAndOrderService/GetOrdersResponse")]
         System.Threading.Tasks.Task<Inventory.Client.WCF.WCFService.Order[]> GetOrdersAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInventoryAndOrderService/AddOrders", ReplyAction="http://tempuri.org/IInventoryAndOrderService/AddOrdersResponse")]
-        Inventory.Client.WCF.WCFService.Order[] AddOrders(Inventory.Client.WCF.WCFService.Order order);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInventoryAndOrderService/AddOrders", ReplyAction="http://tempuri.org/IInventoryAndOrderService/AddOrdersResponse")]
-        System.Threading.Tasks.Task<Inventory.Client.WCF.WCFService.Order[]> AddOrdersAsync(Inventory.Client.WCF.WCFService.Order order);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInventoryAndOrderService/GetStockAndProducts", ReplyAction="http://tempuri.org/IInventoryAndOrderService/GetStockAndProductsResponse")]
-        Inventory.Client.WCF.WCFService.StockAndProduct[] GetStockAndProducts();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInventoryAndOrderService/GetStockAndProducts", ReplyAction="http://tempuri.org/IInventoryAndOrderService/GetStockAndProductsResponse")]
-        System.Threading.Tasks.Task<Inventory.Client.WCF.WCFService.StockAndProduct[]> GetStockAndProductsAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInventoryAndOrderService/GetOrderAndProductAndUsers", ReplyAction="http://tempuri.org/IInventoryAndOrderService/GetOrderAndProductAndUsersResponse")]
-        Inventory.Client.WCF.WCFService.OrderAndProductAndUser[] GetOrderAndProductAndUsers(Inventory.Client.WCF.WCFService.User user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInventoryAndOrderService/GetOrderAndProductAndUsers", ReplyAction="http://tempuri.org/IInventoryAndOrderService/GetOrderAndProductAndUsersResponse")]
-        System.Threading.Tasks.Task<Inventory.Client.WCF.WCFService.OrderAndProductAndUser[]> GetOrderAndProductAndUsersAsync(Inventory.Client.WCF.WCFService.User user);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IInventoryAndOrderServiceCallback {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IInventoryAndOrderService/InventoryUpdated")]
-        void InventoryUpdated();
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IInventoryAndOrderService/StockQuantityChanged")]
+        void StockQuantityChanged();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -482,20 +202,12 @@ namespace Inventory.Client.WCF.WCFService {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public Inventory.Client.WCF.WCFService.Product[] GetProducts() {
-            return base.Channel.GetProducts();
+        public bool CreateOrder(System.Guid stockid, string productname, int quantity) {
+            return base.Channel.CreateOrder(stockid, productname, quantity);
         }
         
-        public System.Threading.Tasks.Task<Inventory.Client.WCF.WCFService.Product[]> GetProductsAsync() {
-            return base.Channel.GetProductsAsync();
-        }
-        
-        public Inventory.Client.WCF.WCFService.User[] GetUsers() {
-            return base.Channel.GetUsers();
-        }
-        
-        public System.Threading.Tasks.Task<Inventory.Client.WCF.WCFService.User[]> GetUsersAsync() {
-            return base.Channel.GetUsersAsync();
+        public System.Threading.Tasks.Task<bool> CreateOrderAsync(System.Guid stockid, string productname, int quantity) {
+            return base.Channel.CreateOrderAsync(stockid, productname, quantity);
         }
         
         public Inventory.Client.WCF.WCFService.Stock[] GetStocks() {
@@ -506,12 +218,12 @@ namespace Inventory.Client.WCF.WCFService {
             return base.Channel.GetStocksAsync();
         }
         
-        public Inventory.Client.WCF.WCFService.Stock[] UpdateStock(Inventory.Client.WCF.WCFService.Stock stock) {
-            return base.Channel.UpdateStock(stock);
+        public Inventory.Client.WCF.WCFService.Stock GetStockById(System.Guid id) {
+            return base.Channel.GetStockById(id);
         }
         
-        public System.Threading.Tasks.Task<Inventory.Client.WCF.WCFService.Stock[]> UpdateStockAsync(Inventory.Client.WCF.WCFService.Stock stock) {
-            return base.Channel.UpdateStockAsync(stock);
+        public System.Threading.Tasks.Task<Inventory.Client.WCF.WCFService.Stock> GetStockByIdAsync(System.Guid id) {
+            return base.Channel.GetStockByIdAsync(id);
         }
         
         public Inventory.Client.WCF.WCFService.Order[] GetOrders() {
@@ -520,30 +232,6 @@ namespace Inventory.Client.WCF.WCFService {
         
         public System.Threading.Tasks.Task<Inventory.Client.WCF.WCFService.Order[]> GetOrdersAsync() {
             return base.Channel.GetOrdersAsync();
-        }
-        
-        public Inventory.Client.WCF.WCFService.Order[] AddOrders(Inventory.Client.WCF.WCFService.Order order) {
-            return base.Channel.AddOrders(order);
-        }
-        
-        public System.Threading.Tasks.Task<Inventory.Client.WCF.WCFService.Order[]> AddOrdersAsync(Inventory.Client.WCF.WCFService.Order order) {
-            return base.Channel.AddOrdersAsync(order);
-        }
-        
-        public Inventory.Client.WCF.WCFService.StockAndProduct[] GetStockAndProducts() {
-            return base.Channel.GetStockAndProducts();
-        }
-        
-        public System.Threading.Tasks.Task<Inventory.Client.WCF.WCFService.StockAndProduct[]> GetStockAndProductsAsync() {
-            return base.Channel.GetStockAndProductsAsync();
-        }
-        
-        public Inventory.Client.WCF.WCFService.OrderAndProductAndUser[] GetOrderAndProductAndUsers(Inventory.Client.WCF.WCFService.User user) {
-            return base.Channel.GetOrderAndProductAndUsers(user);
-        }
-        
-        public System.Threading.Tasks.Task<Inventory.Client.WCF.WCFService.OrderAndProductAndUser[]> GetOrderAndProductAndUsersAsync(Inventory.Client.WCF.WCFService.User user) {
-            return base.Channel.GetOrderAndProductAndUsersAsync(user);
         }
     }
 }

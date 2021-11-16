@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Inventory.Client.WPF.Views
@@ -17,7 +18,7 @@ namespace Inventory.Client.WPF.Views
     /// <summary>
     /// Interaction logic for PopUpWindow.xaml
     /// </summary>
-    public partial class OrderView : Window
+    public partial class OrderView : UserControl
     {
         public OrderView()
         {
